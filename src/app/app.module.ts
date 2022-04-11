@@ -19,7 +19,6 @@ import { LoginComponent } from './login/login.component';
 import { MovieListComponent } from './movie-list/movie-list.component';
 import { MovieDetailsComponent } from './movie-list/movie-details/movie-details.component';
 import { NotfoundComponent } from './notfound/notfound.component';
-import { EmailFieldComponent } from './login/email-field/email-field.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +28,6 @@ import { EmailFieldComponent } from './login/email-field/email-field.component';
     MovieListComponent,
     MovieDetailsComponent,
     NotfoundComponent,
-    EmailFieldComponent,
   ],
   imports: [
     BrowserModule,
