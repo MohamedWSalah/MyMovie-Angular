@@ -1,0 +1,44 @@
+.card {
+  max-width: 300px;
+  position: inherit;
+  margin: 10px;
+  cursor: pointer;
+  transition: transform 0.2s;
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+.cardHeader {
+  justify-content: center;
+  color: #69f0ae;
+
+  mat-card-subtitle {
+    text-align: center;
+  }
+}
+
+.matImage {
+  position: relative;
+}
+.circle {
+  height: 70px;
+  width: 70px;
+  //   display: table-cell;
+  //   text-align: center;
+  //   vertical-align: middle;
+  font-size: 30px;
+  //   border-radius: 50%;
+  //   background: green;
+
+  justify-content: center;
+  align-items: center;
+  border-radius: 100%;
+  text-align: center;
+  display: flex;
+  color: white;
+
+  background: #7b1fa2;
+  position: absolute;
+  transform: translate(-15%, -136%);
+}
