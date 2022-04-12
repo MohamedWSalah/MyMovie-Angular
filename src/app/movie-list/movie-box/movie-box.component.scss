@@ -21,6 +21,7 @@
 .matImage {
   position: relative;
 }
+
 .circle {
   height: 70px;
   width: 70px;
@@ -41,4 +42,9 @@
   background: #7b1fa2;
   position: absolute;
   transform: translate(-15%, -136%);
+}
+
+.readMoreContainer {
+  height: 60px;
+  overflow: hidden;
 }

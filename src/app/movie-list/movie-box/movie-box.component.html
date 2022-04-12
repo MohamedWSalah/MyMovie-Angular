@@ -1,20 +1,30 @@
 <mat-card class="card">
   <mat-card-header class="cardHeader">
-    <mat-card-title>The Shawshank Redemption</mat-card-title>
-    <mat-card-subtitle>1994</mat-card-subtitle>
+    <mat-card-title>{{ movie.original_title }}</mat-card-title>
+    <mat-card-subtitle>{{
+      movie.release_date.substring(0, 4)
+    }}</mat-card-subtitle>
   </mat-card-header>
-  <img
-    mat-card-image
-    src="https://image.tmdb.org/t/p/original/q6y0Go1tsGEsmtFryDOJo3dEmqu.jpg"
-    alt="movietitle"
-    class="matImage"
-  />
-  <div class="circle">9.5</div>
+  <div *ngIf="!imageLoaded" style="text-align: -webkit-center">
+    <mat-spinner></mat-spinner>
+  </div>
+  <div>
+    <img
+      mat-card-image
+      [src]="moviesAPI.getCurrentMoviePoster(movie.poster_path)"
+      alt="movietitle"
+      class="matImage"
+      (load)="onImageLoad()"
+    />
+  </div>
+
+  <div class="circle">{{ movie.vote_average }}</div>
   <mat-card-content>
-    <p>
-      The Shiba Inu is the smallest of the six original and distinct spitz
-      breeds of dog from Japan. A small, agile dog that copes very well with
-      mountainous terrain, the Shiba Inu was originally bred for hunting.
+    <div [ngClass]="{ readMoreContainer: readMoreEnabled }">
+      {{ movie.overview }}
+    </div>
+    <p (click)="readMore()" style="color: #69f0ae" #readMoreField>
+      ...Read More
     </p>
   </mat-card-content>
 </mat-card>

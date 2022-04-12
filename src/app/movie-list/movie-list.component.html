@@ -1,8 +1,11 @@
 <h1>Top Rated Movies</h1>
-<div class="moviesContainer">
-  <app-movie-box></app-movie-box>
-  <app-movie-box></app-movie-box>
-  <app-movie-box></app-movie-box>
-  <app-movie-box></app-movie-box>
-  <app-movie-box></app-movie-box>
+<div *ngIf="movieList.length === 0" style="text-align: -webkit-center">
+  <mat-spinner></mat-spinner>
 </div>
+<div class="moviesContainer">
+  <app-movie-box
+    *ngFor="let movieElement of movieList"
+    [movie]="movieElement"
+  ></app-movie-box>
+</div>
+<mat-paginator></mat-paginator>
