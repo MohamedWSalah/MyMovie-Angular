@@ -1,4 +1,5 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 import { MoviesAPIService } from 'src/app/shared/movies-api.service';
 
 @Component({
@@ -8,7 +9,11 @@ import { MoviesAPIService } from 'src/app/shared/movies-api.service';
 })
 export class MovieBoxComponent implements OnInit {
   @Input() movie: any;
-  constructor(public moviesAPI: MoviesAPIService) {}
+  constructor(
+    public moviesAPI: MoviesAPIService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
 
   imageLoaded: boolean = false;
 
@@ -26,7 +31,7 @@ export class MovieBoxComponent implements OnInit {
   readMore() {
     this.readMoreEnabled = !this.readMoreEnabled;
     this.readMoreEnabled
-      ? (this.readMoreField.nativeElement.innerHTML = '... Read More')
+      ? (this.readMoreField.nativeElement.innerHTML = '...Read More')
       : (this.readMoreField.nativeElement.innerHTML = 'Read Less');
   }
 }

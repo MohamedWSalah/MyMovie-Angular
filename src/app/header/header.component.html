@@ -1,5 +1,5 @@
 <mat-toolbar color="primary">
-  <h1>My Movie</h1>
+  <h1 (click)="GoToMovie()" style="cursor: pointer">My Movie</h1>
   <span class="fill-space"></span>
   <h1 style="margin-right: 30px">
     {{ userService.getLoggedUser() }}

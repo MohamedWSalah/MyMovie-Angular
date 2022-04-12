@@ -1,0 +1,42 @@
+.movieContainer {
+  text-align: center;
+  width: 90%;
+  margin: 40px auto auto auto;
+
+  .mainImg {
+    width: 70%;
+  }
+  h1 {
+    font-size: 2.5em;
+    font-family: "Courier New", Courier, monospace;
+  }
+  h3 {
+    font-size: 1.5em;
+    font-family: "Courier New", Courier, monospace;
+  }
+
+  .productionCompanies {
+    display: flex;
+    place-content: center;
+    flex-wrap: wrap;
+    gap: 60px;
+    div {
+      align-self: center;
+    }
+    img {
+      width: 150px;
+      height: 120px;
+      margin: 5px;
+    }
+  }
+
+  .productionCountries {
+    display: flex;
+    place-content: center;
+    flex-wrap: wrap;
+    gap: 60px;
+    img {
+      width: 100px;
+    }
+  }
+}

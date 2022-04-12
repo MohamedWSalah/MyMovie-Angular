@@ -1,6 +1,6 @@
 <mat-card class="card">
-  <mat-card-header class="cardHeader">
-    <mat-card-title>{{ movie.original_title }}</mat-card-title>
+  <mat-card-header class="cardHeader" [routerLink]="['/movie', movie.id]">
+    <mat-card-title>{{ movie.title }}</mat-card-title>
     <mat-card-subtitle>{{
       movie.release_date.substring(0, 4)
     }}</mat-card-subtitle>
@@ -10,6 +10,7 @@
   </div>
   <div>
     <img
+      [routerLink]="['/movie', movie.id]"
       mat-card-image
       [src]="moviesAPI.getCurrentMoviePoster(movie.poster_path)"
       alt="movietitle"

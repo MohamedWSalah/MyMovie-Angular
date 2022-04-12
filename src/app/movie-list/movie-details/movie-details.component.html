@@ -1,1 +1,36 @@
-<p>movie-details works!</p>
+<div class="movieContainer">
+  <h1>{{ movieDetails.original_title }}</h1>
+  <h1 *ngIf="movieDetails.original_language !== 'en'">
+    {{ movieDetails.title }}
+  </h1>
+  <h3>{{ movieDetails.release_date.substring(0, 4) }}</h3>
+  <img
+    class="mainImg"
+    [src]="moviesAPI.getCurrentMoviePoster(movieDetails.backdrop_path)"
+  />
+  <h3>{{ movieDetails.tagline }}</h3>
+  <p>{{ movieDetails.overview }}</p>
+  <h1 *ngIf="movieDetails.production_companies != 0">Production Companies</h1>
+  <div class="productionCompanies">
+    <div *ngFor="let company of movieDetails.production_companies">
+      <img
+        *ngIf="company.logo_path"
+        class="mainImg"
+        [src]="moviesAPI.getCurrentMoviePoster(company.logo_path)"
+        [alt]=""
+      />
+      <p *ngIf="!company.logo_path">{{ company.name }}</p>
+    </div>
+  </div>
+
+  <h1>Production Countries</h1>
+  <div class="productionCountries">
+    <div *ngFor="let country of movieDetails.production_countries">
+      <img
+        *ngIf="country.iso_3166_1"
+        class="mainImg"
+        src="https://countryflagsapi.com/png/{{ country.iso_3166_1 }}"
+      />
+    </div>
+  </div>
+</div>
