@@ -9,8 +9,13 @@ import { NotfoundComponent } from './notfound/notfound.component';
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
-  { path: 'movies', component: MovieListComponent, canActivate: [AuthGuard] },
-  { path: 'movies/:id', component: MovieDetailsComponent },
+  {
+    path: 'movies',
+    component: MovieListComponent,
+    canActivate: [AuthGuard],
+    children: [{ path: ':id', component: MovieDetailsComponent }],
+  },
+
   { path: '**', component: NotfoundComponent },
 ];
 

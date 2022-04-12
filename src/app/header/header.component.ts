@@ -8,6 +8,8 @@ import { UsersService } from '../shared/users.service';
 })
 export class HeaderComponent implements OnInit {
   constructor(public userService: UsersService) {}
-
+  logout() {
+    this.userService.userLogout();
+  }
   ngOnInit(): void {}
 }

@@ -19,6 +19,7 @@ import { LoginComponent } from './login/login.component';
 import { MovieListComponent } from './movie-list/movie-list.component';
 import { MovieDetailsComponent } from './movie-list/movie-details/movie-details.component';
 import { NotfoundComponent } from './notfound/notfound.component';
+import { MovieBoxComponent } from './movie-list/movie-box/movie-box.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { NotfoundComponent } from './notfound/notfound.component';
     MovieListComponent,
     MovieDetailsComponent,
     NotfoundComponent,
+    MovieBoxComponent,
   ],
   imports: [
     BrowserModule,

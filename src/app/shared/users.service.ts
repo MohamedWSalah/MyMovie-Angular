@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -6,12 +7,12 @@ import { Injectable } from '@angular/core';
 export class UsersService {
   users = [
     { email: 'test@test', password: 'testtest' },
-    { email: 'Moon@Moon', password: 'moonmoon' },
+    { email: 'moon@moon', password: 'moonmoon' },
   ];
 
-  loggedUser = '';
+  loggedUser = sessionStorage.getItem('loggedUser') || '';
 
-  constructor() {}
+  constructor(private router: Router) {}
 
   getLoggedUser() {
     return this.loggedUser;
@@ -19,16 +20,23 @@ export class UsersService {
 
   //Validating if user name and passwords existing.
   userValidate(email: string, password: string) {
-    this.loggedUser;
     let foundUser = this.users.find(
       (user) => user.email === email && user.password === password
     );
     if (foundUser) {
       this.loggedUser = foundUser.email;
+      sessionStorage.setItem('loggedUser', this.loggedUser);
       console.log(this.loggedUser);
       return true;
     }
     return false;
+  }
+
+  //logout the user if he went to login page.
+  userLogout() {
+    this.loggedUser = '';
+    sessionStorage.removeItem('loggedUser');
+    this.router.navigate(['/login']);
   }
 
   //Registering new user.

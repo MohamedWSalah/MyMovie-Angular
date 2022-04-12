@@ -15,7 +15,9 @@ export class LoginComponent implements OnInit {
     private userService: UsersService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.userService.userLogout();
+  }
 
   email = new FormControl('', [Validators.required, Validators.email]);
   password = new FormControl('', [
