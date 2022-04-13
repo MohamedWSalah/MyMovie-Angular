@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MoviesAPIService } from 'src/app/shared/movies-api.service';
 
 @Component({
@@ -10,6 +10,7 @@ import { MoviesAPIService } from 'src/app/shared/movies-api.service';
 export class MovieDetailsComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     public moviesAPI: MoviesAPIService
   ) {}
 
@@ -26,5 +27,8 @@ export class MovieDetailsComponent implements OnInit {
 
   onImageLoad() {
     this.imageLoaded = true;
+  }
+  moviesList() {
+    this.router.navigate(['/movies']);
   }
 }

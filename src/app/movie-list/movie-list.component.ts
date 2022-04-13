@@ -8,12 +8,22 @@ import { MoviesAPIService } from '../shared/movies-api.service';
   styleUrls: ['./movie-list.component.scss'],
 })
 export class MovieListComponent implements OnInit {
-  constructor(private moviesAPI: MoviesAPIService) {}
+  constructor(public moviesAPI: MoviesAPIService) {}
 
   movieList = [];
   page = 1;
   totalPages = 0;
   totalItems = 0;
+
+  ngOnInit(): void {
+    this.fetchMovies(this.page);
+  }
+
+  ngAfterViewChecked() {
+    const list = document.getElementsByClassName('mat-paginator-range-label');
+    list[0].innerHTML =
+      'Page: ' + this.page.toString() + ' of ' + this.totalPages.toString();
+  }
 
   fetchMovies(page: number) {
     this.moviesAPI.getTopRatedMovies(page).subscribe((data: any) => {
@@ -23,15 +33,6 @@ export class MovieListComponent implements OnInit {
       this.movieList = data['results'];
       console.log(this.movieList);
     });
-  }
-  ngOnInit(): void {
-    this.fetchMovies(this.page);
-  }
-
-  ngAfterViewChecked() {
-    const list = document.getElementsByClassName('mat-paginator-range-label');
-    list[0].innerHTML =
-      'Page: ' + this.page.toString() + ' of ' + this.totalPages.toString();
   }
 
   pageChanged(event: PageEvent) {

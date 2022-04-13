@@ -1,3 +1,8 @@
+<mat-icon
+  style="font-size: xx-large; margin: 20px; cursor: pointer"
+  (click)="moviesList()"
+  >arrow_back</mat-icon
+>
 <div class="movieContainer">
   <div *ngIf="!imageLoaded" style="text-align: -webkit-center">
     <mat-spinner></mat-spinner>
@@ -6,7 +11,7 @@
   <h1 *ngIf="movieDetails.original_language !== 'en'">
     {{ movieDetails.title }}
   </h1>
-  <h3>{{ movieDetails.release_date.substring(0, 4) }}</h3>
+  <h3>{{ movieDetails.release_date?.substring(0, 4) }}</h3>
   <img
     class="mainImg"
     [src]="moviesAPI.getCurrentMoviePoster(movieDetails.backdrop_path)"
