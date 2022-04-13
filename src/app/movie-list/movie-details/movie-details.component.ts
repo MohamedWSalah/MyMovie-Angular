@@ -27,12 +27,4 @@ export class MovieDetailsComponent implements OnInit {
   onImageLoad() {
     this.imageLoaded = true;
   }
-
-  test() {
-    console.log(
-      this.moviesAPI.getCountryFlag(
-        this.movieDetails.production_countries.iso_3166_1
-      )
-    );
-  }
 }

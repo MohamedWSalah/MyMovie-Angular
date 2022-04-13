@@ -9,6 +9,7 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
+//change scrollbar color
 ::-webkit-scrollbar {
   width: 10px;
   background-color: #cbd1dd;
@@ -16,4 +17,30 @@ body {
 ::-webkit-scrollbar-thumb {
   background-color: #7b1fa2;
   border-radius: 20px;
+}
+
+//loading spinner
+.cover-spin {
+  position: fixed;
+  width: 100%;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 9999;
+  display: block;
+
+  div {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border-top-color: transparent;
+    border-left-color: transparent;
+    animation: spin 1s linear infinite;
+  }
 }

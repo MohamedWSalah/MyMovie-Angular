@@ -5,11 +5,14 @@
       movie.release_date.substring(0, 4)
     }}</mat-card-subtitle>
   </mat-card-header>
+
   <div *ngIf="!imageLoaded" style="text-align: -webkit-center">
     <mat-spinner></mat-spinner>
   </div>
+
   <div>
     <img
+      [ngStyle]="{ display: imageLoaded ? 'block' : 'none' }"
       [routerLink]="['/movie', movie.id]"
       mat-card-image
       [src]="moviesAPI.getCurrentMoviePoster(movie.poster_path)"

@@ -1,5 +1,5 @@
-import { Component, OnInit, SimpleChange } from '@angular/core';
-import { MatPaginatorIntl, PageEvent } from '@angular/material/paginator';
+import { Component, OnInit } from '@angular/core';
+import { PageEvent } from '@angular/material/paginator';
 import { MoviesAPIService } from '../shared/movies-api.service';
 
 @Component({
@@ -24,7 +24,6 @@ export class MovieListComponent implements OnInit {
       console.log(this.movieList);
     });
   }
-
   ngOnInit(): void {
     this.fetchMovies(this.page);
   }
@@ -36,13 +35,9 @@ export class MovieListComponent implements OnInit {
   }
 
   pageChanged(event: PageEvent) {
-    console.log({ event });
+    //console.log({ event });
     this.page = event.pageIndex + 1;
     this.fetchMovies(this.page);
     window.scrollTo(0, 0);
-  }
-
-  printx() {
-    console.log('HERE');
   }
 }
