@@ -1,4 +1,7 @@
 <div class="movieContainer">
+  <div *ngIf="!imageLoaded" style="text-align: -webkit-center">
+    <mat-spinner></mat-spinner>
+  </div>
   <h1>{{ movieDetails.original_title }}</h1>
   <h1 *ngIf="movieDetails.original_language !== 'en'">
     {{ movieDetails.title }}
@@ -7,9 +10,56 @@
   <img
     class="mainImg"
     [src]="moviesAPI.getCurrentMoviePoster(movieDetails.backdrop_path)"
+    (load)="onImageLoad()"
   />
   <h3>{{ movieDetails.tagline }}</h3>
+  <div class="genre">
+    <h4 *ngFor="let genre of movieDetails.genres">
+      {{ genre.name }}
+    </h4>
+  </div>
   <p>{{ movieDetails.overview }}</p>
+  <hr />
+  <br />
+  <h1>Details</h1>
+
+  <div class="details">
+    <div>
+      <a [href]="movieDetails.homepage" target="_blank" class="hyperLink"
+        >Website</a
+      >
+
+      <p>{{ "Populairty : " + movieDetails.popularity }}</p>
+      <p>{{ "Revenue : " + movieDetails.revenue }}</p>
+      <p>{{ "Runtime : " + movieDetails.runtime + " Mins" }}</p>
+      <p>{{ "Budget : " + movieDetails.budget }}</p>
+      <p>{{ "Vote count : " + movieDetails.vote_count }}</p>
+      <p>{{ "Rate : " + movieDetails.vote_average }}</p>
+      <span
+        >{{ "Status : " }}
+        <p
+          style="display: inline"
+          [ngStyle]="{
+            color: movieDetails.status === 'Released' ? '#69f0ae' : 'red'
+          }"
+        >
+          {{ movieDetails.status }}
+        </p></span
+      >
+    </div>
+  </div>
+  <hr />
+  <br />
+
+  <h1>Spoken Languages</h1>
+  <div class="spokenLanguages">
+    <div *ngFor="let language of movieDetails.spoken_languages">
+      <p *ngIf="language.english_name">{{ language.english_name }}</p>
+    </div>
+  </div>
+
+  <hr />
+  <br />
   <h1 *ngIf="movieDetails.production_companies != 0">Production Companies</h1>
   <div class="productionCompanies">
     <div *ngFor="let company of movieDetails.production_companies">
@@ -22,6 +72,8 @@
       <p *ngIf="!company.logo_path">{{ company.name }}</p>
     </div>
   </div>
+  <hr />
+  <br />
 
   <h1>Production Countries</h1>
   <div class="productionCountries">
@@ -33,4 +85,24 @@
       />
     </div>
   </div>
+  <hr />
+  <br />
+
+  <div *ngIf="movieDetails.belongs_to_collection">
+    <h1>Collection</h1>
+    <div>
+      <p>{{ movieDetails.belongs_to_collection.name }}</p>
+      <img
+        *ngIf="movieDetails.belongs_to_collection.poster_path"
+        class="collectionImage"
+        [src]="
+          moviesAPI.getCurrentMoviePoster(
+            movieDetails.belongs_to_collection.poster_path
+          )
+        "
+        [alt]=""
+      />
+    </div>
+  </div>
 </div>
+<app-footer></app-footer>

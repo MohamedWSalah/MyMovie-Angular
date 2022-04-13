@@ -1,3 +1,4 @@
+$greenieColor: #69f0ae;
 .moviesContainer {
   display: flex;
   flex-wrap: wrap;
@@ -7,7 +8,39 @@
   margin-top: 20px;
 }
 
-h1 {
+h1,
+h3 {
   text-align: center;
   margin-top: 20px;
+}
+
+::ng-deep .mat-paginator {
+  background-color: transparent;
+  font-size: large;
+  .mat-paginator-container {
+    justify-content: center;
+    display: flex;
+    justify-content: center;
+  }
+
+  .mat-paginator-navigation-first {
+    order: 1;
+    color: $greenieColor;
+  }
+
+  .mat-paginator-navigation-previous {
+    order: 2;
+    color: $greenieColor;
+  }
+  .mat-paginator-range-label {
+    order: 3;
+  }
+  .mat-paginator-navigation-next {
+    order: 4;
+    color: $greenieColor;
+  }
+  .mat-paginator-navigation-last {
+    order: 5;
+    color: $greenieColor;
+  }
 }

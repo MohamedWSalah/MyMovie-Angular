@@ -1,4 +1,6 @@
 <h1>Top Rated Movies</h1>
+<h3>{{ "Page  " + page }}</h3>
+
 <div *ngIf="movieList.length === 0" style="text-align: -webkit-center">
   <mat-spinner></mat-spinner>
 </div>
@@ -8,4 +10,11 @@
     [movie]="movieElement"
   ></app-movie-box>
 </div>
-<mat-paginator></mat-paginator>
+<mat-paginator
+  [length]="totalItems"
+  [pageSize]="20"
+  [hidePageSize]="true"
+  (page)="pageChanged($event)"
+  [showFirstLastButtons]="true"
+></mat-paginator>
+<app-footer></app-footer>

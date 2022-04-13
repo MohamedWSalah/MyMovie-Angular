@@ -16,11 +16,16 @@ export class MovieDetailsComponent implements OnInit {
   movieID = this.route.snapshot.params['id'];
   movieDetails: any = {};
 
+  imageLoaded: boolean = false;
+
   ngOnInit(): void {
     this.moviesAPI.getMovieDetailsByID(this.movieID).subscribe((data: any) => {
       this.movieDetails = data;
-      console.log(this.movieDetails, 'SADSA');
     });
+  }
+
+  onImageLoad() {
+    this.imageLoaded = true;
   }
 
   test() {

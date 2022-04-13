@@ -8,9 +8,9 @@ export class MoviesAPIService {
   constructor(private http: HttpClient) {}
 
   //calls top rated movies api (retreives a list of top rated movies)
-  getTopRatedMovies() {
+  getTopRatedMovies(page: number) {
     return this.http.get(
-      'https://api.themoviedb.org/3/movie/top_rated?api_key=798d5d5d77f771954061c371c63dbaf6&page=1'
+      `https://api.themoviedb.org/3/movie/top_rated?api_key=798d5d5d77f771954061c371c63dbaf6&page=${page}`
     );
   }
 
